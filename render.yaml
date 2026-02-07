@@ -2,23 +2,10 @@ services:
   - type: web
     name: ragentix-backend
     env: docker
-    dockerContext: backend
-    dockerfilePath: backend/Dockerfile
+    dockerfilePath: Dockerfile
+    dockerContext: .
     envVars:
       - key: OPENAI_API_KEY
-        sync: false
-      - key: DATABASE_URL
-        fromDatabase:
-          name: ragentix-db
-          property: connectionString
-      - key: REDIS_URL
-        fromService:
-          type: redis
-          name: ragentix-cache
-          property: connectionString
-      - key: QDRANT_URL
-        sync: false
-      - key: QDRANT_API_KEY
         sync: false
 
   - type: redis
