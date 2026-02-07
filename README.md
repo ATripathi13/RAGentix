@@ -56,7 +56,8 @@ The system automatically evaluates every response:
 ### Backend (Render)
 1. Link your GitHub repository to **Render**.
 2. Render will automatically detect `render.yaml` and prompt you to create the Blueprint.
-3. Sensitive keys like `OPENAI_API_KEY` can be left blank in Render and provided via the frontend **Settings** page for better security and flexibility.
+3. **IMPORTANT**: If Render attempts a native Python build and fails, go to the **Settings** tab in the Render dashboard and ensure the **Runtime** (or Environment) is manually set to **Docker**.
+4. Sensitive keys like `OPENAI_API_KEY` can be left blank in Render and provided via the frontend **Settings** page.
 
 ### Frontend (Vercel)
 1. Import the repository into **Vercel**.

@@ -5,8 +5,6 @@ services:
     dockerContext: backend
     dockerfilePath: backend/Dockerfile
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.11.8
       - key: OPENAI_API_KEY
         sync: false
       - key: DATABASE_URL
@@ -26,7 +24,7 @@ services:
   - type: redis
     name: ragentix-cache
     plan: free
-    ipAllowList: [] # Only allow internal connections
+    ipAllowList: []
 
 databases:
   - name: ragentix-db
