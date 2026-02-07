@@ -8,6 +8,13 @@ RAGentix is a scalable, knowledge-powered AI agent platform built with FastAPI, 
 - **Evaluation Framework**: Built-in metrics for Relevance, Faithfulness, and Confidence.
 - **Production Ready**: Dockerized with support for Postgres, Redis, and Qdrant.
 
+## ⚙️ How it Works
+1.  **Ingestion**: Documents are uploaded, chunked, and stored as embeddings in **Qdrant**.
+2.  **Retrieval**: When a query is made, the **Retriever Agent** fetches the most relevant context using MMR (Maximal Marginal Relevance).
+3.  **Analysis**: The **Analyzer Agent** evaluates the context for sufficiency and identifies key facts.
+4.  **Generation**: The **Answer Agent** synthesizes the final response using the retrieved facts.
+5.  **Evaluation**: An **Evaluation Engine** concurrently calculates relevance, faithfulness, and confidence scores.
+
 ## 🛠 Tech Stack
 - **Backend**: FastAPI
 - **AI**: LangGraph, langchain-openai
