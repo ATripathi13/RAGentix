@@ -52,4 +52,14 @@ The system automatically evaluates every response:
 - **Confidence**: Weighted score based on retrieval and answer quality.
 
 ## ☁️ Deployment
-Ready for deployment on AWS using ECS (API) and RDS (Postgres).
+
+### Backend (Render)
+1. Link your GitHub repository to **Render**.
+2. Render will automatically detect `render.yaml` and prompt you to create the Blueprint.
+3. Provide the `OPENAI_API_KEY`, `QDRANT_URL`, and `QDRANT_API_KEY` in the Render dashboard.
+
+### Frontend (Vercel)
+1. Import the repository into **Vercel**.
+2. Set the **Root Directory** to `frontend`.
+3. Add the Environment Variable `VITE_API_URL` pointing to your Render backend URL.
+4. Deploy!
