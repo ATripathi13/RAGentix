@@ -5,8 +5,8 @@ services:
     dockerfilePath: Dockerfile
     dockerContext: .
     envVars:
-      - key: OPENAI_API_KEY
-        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11.10
 
   - type: redis
     name: ragentix-cache
