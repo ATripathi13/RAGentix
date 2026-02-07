@@ -28,7 +28,7 @@ RAGentix is a scalable, knowledge-powered AI agent platform built with FastAPI, 
    cd RAGentix
    ```
 2. Setup Backend:
-   - Create `backend/.env` from `backend/.env.example` and add your `OPENAI_API_KEY`.
+   - Create `backend/.env` from `backend/.env.example` (environment variables are now optional as they can be provided via the UI).
    - Start services:
      ```bash
      docker-compose up --build
@@ -56,7 +56,7 @@ The system automatically evaluates every response:
 ### Backend (Render)
 1. Link your GitHub repository to **Render**.
 2. Render will automatically detect `render.yaml` and prompt you to create the Blueprint.
-3. Provide the `OPENAI_API_KEY`, `QDRANT_URL`, and `QDRANT_API_KEY` in the Render dashboard.
+3. Sensitive keys like `OPENAI_API_KEY` can be left blank in Render and provided via the frontend **Settings** page for better security and flexibility.
 
 ### Frontend (Vercel)
 1. Import the repository into **Vercel**.
