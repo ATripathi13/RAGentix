@@ -27,10 +27,17 @@ RAGentix is a scalable, knowledge-powered AI agent platform built with FastAPI, 
    git clone https://github.com/ATripathi13/RAGentix.git
    cd RAGentix
    ```
-2. Create a `.env` file based on `.env.example`.
-3. Start the system:
+2. Setup Backend:
+   - Create `backend/.env` from `backend/.env.example` and add your `OPENAI_API_KEY`.
+   - Start services:
+     ```bash
+     docker-compose up --build
+     ```
+3. Setup Frontend:
    ```bash
-   docker-compose up --build
+   cd frontend
+   npm install
+   npm run dev
    ```
 
 ### API Endpoints
