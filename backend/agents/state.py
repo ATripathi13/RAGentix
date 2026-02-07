@@ -9,3 +9,4 @@ class AgentState(TypedDict):
     answer: str
     next_step: str
     retry_count: int
+    config: dict

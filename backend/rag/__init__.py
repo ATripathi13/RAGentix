@@ -4,9 +4,14 @@ from rag.processor import DocumentProcessor
 from rag.vector_store import VectorStoreManager
 
 class RAGPipeline:
-    def __init__(self, collection_name: str = "genai_docs"):
+    def __init__(self, collection_name: str = "genai_docs", openai_api_key: str = None, qdrant_url: str = None, qdrant_api_key: str = None):
         self.processor = DocumentProcessor()
-        self.vector_store = VectorStoreManager(collection_name=collection_name)
+        self.vector_store = VectorStoreManager(
+            collection_name=collection_name,
+            openai_api_key=openai_api_key,
+            qdrant_url=qdrant_url,
+            qdrant_api_key=qdrant_api_key
+        )
 
     def ingest_file(self, file_path: str):
         """Process and store a file in the vector database."""

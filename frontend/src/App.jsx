@@ -6,6 +6,7 @@ import AskAgent from './pages/AskAgent';
 import RAGViewer from './pages/RAGViewer';
 import WorkflowViewer from './pages/WorkflowViewer';
 import Evaluation from './pages/Evaluation';
+import Settings from './pages/Settings';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="rag" element={<RAGViewer />} />
           <Route path="workflow" element={<WorkflowViewer />} />
           <Route path="evaluation" element={<Evaluation />} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </BrowserRouter>

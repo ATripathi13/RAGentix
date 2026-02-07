@@ -9,13 +9,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class VectorStoreManager:
-    def __init__(self, collection_name: str = "genai_docs"):
+    def __init__(self, collection_name: str = "genai_docs", openai_api_key: str = None, qdrant_url: str = None, qdrant_api_key: str = None):
         self.client = QdrantClient(
-            url=os.getenv("QDRANT_URL", "http://localhost:6333"),
-            api_key=os.getenv("QDRANT_API_KEY"),
+            url=qdrant_url or os.getenv("QDRANT_URL", "http://localhost:6333"),
+            api_key=qdrant_api_key or os.getenv("QDRANT_API_KEY"),
         )
         self.embeddings = OpenAIEmbeddings(
-            model="text-embedding-3-large"
+            model="text-embedding-3-large",
+            openai_api_key=openai_api_key or os.getenv("OPENAI_API_KEY")
         )
         self.collection_name = collection_name
         self.vector_store = None
@@ -25,8 +26,8 @@ class VectorStoreManager:
         self.vector_store = Qdrant.from_documents(
             documents,
             self.embeddings,
-            url=os.getenv("QDRANT_URL", "http://localhost:6333"),
-            api_key=os.getenv("QDRANT_API_KEY"),
+            url=self.client._url,
+            api_key=self.client._api_key,
             collection_name=self.collection_name,
             force_recreate=False
         )

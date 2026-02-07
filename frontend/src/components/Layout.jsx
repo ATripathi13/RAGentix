@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { LayoutDashboard, MessageSquare, BookOpen, GitBranch, BarChart3, Binary } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, BookOpen, GitBranch, BarChart3, Binary, Settings } from 'lucide-react';
 
 const Sidebar = () => {
     const navItems = [
@@ -9,6 +9,7 @@ const Sidebar = () => {
         { to: "/rag", icon: <BookOpen size={20} />, label: "RAG Retrieval" },
         { to: "/workflow", icon: <GitBranch size={20} />, label: "Workflow" },
         { to: "/evaluation", icon: <BarChart3 size={20} />, label: "Evaluation" },
+        { to: "/settings", icon: <Settings size={20} />, label: "Settings" },
     ];
 
     return (

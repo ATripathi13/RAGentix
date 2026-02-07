@@ -3,13 +3,17 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from core.config import settings
 
-model = ChatOpenAI(model=settings.MODEL_NAME)
-
 def analyzer_agent(state: AgentState):
     """Analyze the retrieved documents and decide if more info is needed or if we can answer."""
     print("---ANALYZING CONTENT---")
     query = state["query"]
     docs = state["retrieved_docs"]
+    config = state.get("config", {})
+    
+    model = ChatOpenAI(
+        model=settings.MODEL_NAME,
+        openai_api_key=config.get("openai_api_key") or settings.OPENAI_API_KEY
+    )
     
     prompt = ChatPromptTemplate.from_template(
         "You are an analyzer. Given the user query and the retrieved context, decide if there is enough information to answer. "

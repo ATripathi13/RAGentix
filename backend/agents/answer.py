@@ -3,13 +3,17 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from core.config import settings
 
-model = ChatOpenAI(model=settings.MODEL_NAME)
-
 def answer_agent(state: AgentState):
     """Generate the final answer based on context and analysis."""
     print("---GENERATING ANSWER---")
     query = state["query"]
     docs = state["retrieved_docs"]
+    config = state.get("config", {})
+    
+    model = ChatOpenAI(
+        model=settings.MODEL_NAME,
+        openai_api_key=config.get("openai_api_key") or settings.OPENAI_API_KEY
+    )
     
     prompt = ChatPromptTemplate.from_template(
         "You are a helpful assistant. Use the following pieces of context to answer the user's question. "

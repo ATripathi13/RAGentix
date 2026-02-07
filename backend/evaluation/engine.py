@@ -4,13 +4,14 @@ from numpy import dot
 from numpy.linalg import norm
 from rag.vector_store import VectorStoreManager
 
-vector_store = VectorStoreManager()
-
 class EvaluationEngine:
+    def __init__(self, openai_api_key: str = None):
+        self.vector_store = VectorStoreManager(openai_api_key=openai_api_key)
+
     def calculate_relevance(self, query: str, answer: str) -> float:
         """Calculate cosine similarity between query and answer embeddings."""
-        q_emb = vector_store.embeddings.embed_query(query)
-        a_emb = vector_store.embeddings.embed_query(answer)
+        q_emb = self.vector_store.embeddings.embed_query(query)
+        a_emb = self.vector_store.embeddings.embed_query(answer)
         
         cos_sim = dot(q_emb, a_emb) / (norm(q_emb) * norm(a_emb))
         return float(cos_sim)
