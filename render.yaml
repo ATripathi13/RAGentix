@@ -1,10 +1,9 @@
 services:
   - type: web
     name: ragentix-backend
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
-    rootDirectory: backend
+    env: docker
+    dockerContext: backend
+    dockerfilePath: docker/Dockerfile
     envVars:
       - key: OPENAI_API_KEY
         sync: false
@@ -22,12 +21,11 @@ services:
       - key: QDRANT_API_KEY
         sync: false
 
-databases:
-  - name: ragentix-db
-    plan: free
-
-services:
   - type: redis
     name: ragentix-cache
     plan: free
     ipAllowList: [] # Only allow internal connections
+
+databases:
+  - name: ragentix-db
+    plan: free
