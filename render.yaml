@@ -3,7 +3,7 @@ services:
     name: ragentix-backend
     env: docker
     dockerContext: backend
-    dockerfilePath: Dockerfile
+    dockerfilePath: backend/Dockerfile
     envVars:
       - key: OPENAI_API_KEY
         sync: false
